@@ -1,4 +1,4 @@
-function CVDisplay({ personalData }) {
+function CVDisplay({ personalData, educationData, experienceData }) {
   return (
     <>
       <div className="title-name">
@@ -19,6 +19,32 @@ function CVDisplay({ personalData }) {
         </p>
         <p className="personal-info">
           {personalData.github || "hunter12.github.com"}
+        </p>
+      </div>
+      <div className="education-info-div">
+        <p className="education-info">
+          {educationData.institution || "Starfleet Academy"}
+        </p>
+        <p className="education-info">
+          {educationData.datesOfStudy || "2022-2025"}
+        </p>
+        <p className="education-info">
+          {educationData.courseName || "Espionage"}
+        </p>
+      </div>
+      <div className="experience-info-div">
+        <p className="experience-info">
+          {experienceData.jobTitle || "Rider of Rohan"}
+        </p>
+        <p className="experience-info">
+          {experienceData.placeOfWork || "Rohan"}
+        </p>
+        <p className="experience-info">
+          {experienceData.datesOfWork || "The Third Age (current position)"}
+        </p>
+        <p className="experience-info">
+          {experienceData.responsibilities ||
+            "Protect Rohan from the forces of darkness (or Gondor)."}
         </p>
       </div>
     </>

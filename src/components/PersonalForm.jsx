@@ -2,7 +2,7 @@ function PersonalForm({ personalData, handleChange, handleSubmit }) {
   return (
     <>
       <form onSubmit={handleSubmit}>
-        <label for="fullname">Full name: </label>
+        <label for="fullName">Full name: </label>
         <input
           type="text"
           id="fullName"
