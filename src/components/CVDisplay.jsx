@@ -21,17 +21,22 @@ function CVDisplay({ personalData, educationData, experienceData }) {
           {personalData.github || "hunter12.github.com"}
         </p>
       </div>
-      <div className="education-info-div">
-        <p className="education-info">
-          {educationData.institution || "Starfleet Academy"}
-        </p>
-        <p className="education-info">
-          {educationData.datesOfStudy || "2022-2025"}
-        </p>
-        <p className="education-info">
-          {educationData.courseName || "Espionage"}
-        </p>
-      </div>
+      {educationData.education.map((education) => (
+        <div key={education.id}>
+          <div className="education-info-div">
+            <p className="education-info">
+              {educationData.institution || "Starfleet Academy"}
+            </p>
+            <p className="education-info">
+              {educationData.datesOfStudy || "2022-2025"}
+            </p>
+            <p className="education-info">
+              {educationData.courseName || "Espionage"}
+            </p>
+          </div>
+        </div>
+      ))}
+
       <div className="experience-info-div">
         <p className="experience-info">
           {experienceData.jobTitle || "Rider of Rohan"}

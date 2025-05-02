@@ -1,7 +1,7 @@
-function ExperienceForm({ experienceData, handleChange, handleSubmit }) {
+function ExperienceForm({ experienceData, handleChange }) {
   return (
     <>
-      <form onSubmit={handleSubmit}>
+      <form>
         <label for="jobTitle">Job Title: </label>
         <input
           type="text"
@@ -42,9 +42,10 @@ function ExperienceForm({ experienceData, handleChange, handleSubmit }) {
           placeholder="Protect Rohan from the forces of darkness (or Gondor)."
         ></input>
         <br />
-        <button>New Experience</button>
-        <br />
       </form>
+      <button onClick={() => alert("experience button clicked")}>
+        New Experience
+      </button>
     </>
   );
 }

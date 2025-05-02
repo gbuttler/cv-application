@@ -1,7 +1,7 @@
-function PersonalForm({ personalData, handleChange, handleSubmit }) {
+function PersonalForm({ personalData, handleChange }) {
   return (
     <>
-      <form onSubmit={handleSubmit}>
+      <form>
         <label for="fullName">Full name: </label>
         <input
           type="text"

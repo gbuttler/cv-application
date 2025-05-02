@@ -18,7 +18,7 @@ function App() {
     github: "",
   });
 
-  //update state when inputs change in PERSONAL
+  //PERSONAL - update state when inputs change
   const handlePersonalChange = (e) => {
     const { name, value } = e.target;
     setPersonalData((prevPersonalData) => ({
@@ -27,32 +27,64 @@ function App() {
     }));
   };
 
-  //PERSONAL form submission
-  const handlePersonalSubmit = (e) => {
-    e.preventDefault();
-    console.log("Personal form submitted", personalData);
-  };
-
   //store EDUCATION data
   const [educationData, setEducationData] = useState({
-    institution: "",
-    datesOfStudy: "",
-    courseName: "",
+    education: [{ id: 1, institution: "", datesOfStudy: "", courseName: "" }],
   });
 
-  //update state when inputs change in EDUCATION
-  const handleEducationChange = (e) => {
+  //EDUCATION - update state when inputs change
+  const handleEducationChange = (e, educationId) => {
     const { name, value } = e.target;
-    setEducationData((prevEducationData) => ({
-      ...prevEducationData,
-      [name]: value,
-    }));
+
+    setEducationData((prevEducationData) => {
+      const updatedEducation = prevEducationData.education.map((education) =>
+        education.id === educationId
+          ? { ...education, [name]: value }
+          : education
+      );
+
+      return {
+        ...prevEducationData,
+        education: updatedEducation,
+      };
+    });
   };
 
-  //EDUCATION form submission
-  const handleEducationSubmit = (e) => {
-    e.preventDefault();
-    console.log("Education form submitted", educationData);
+  //EDUCATION - add a new education entry
+  const handleAddEducation = () => {
+    setEducationData((prevEducationData) => {
+      //get a new id
+      const newId =
+        prevEducationData.education.length > 0
+          ? Math.max(
+              ...prevEducationData.education.map((education) => education.id)
+            ) + 1
+          : 1;
+
+      //create new education
+      const newEducation = {
+        id: newId,
+        institution: "",
+        datesOfStudy: "",
+        courseName: "",
+      };
+
+      //add to the education array
+      return {
+        ...prevEducationData,
+        education: [...prevEducationData.education, newEducation],
+      };
+    });
+  };
+
+  //EDUCATION - remove extra education
+  const handleRemoveEducation = (educationId) => {
+    setEducationData((prevEducationData) => ({
+      ...prevEducationData,
+      education: prevEducationData.education.filter(
+        (education) => education.id !== educationId
+      ),
+    }));
   };
 
   //store EXPERIENCE data
@@ -63,7 +95,7 @@ function App() {
     responsibilities: "",
   });
 
-  //update state when inputs change in EXPERIENCE
+  //EXPERIENCE - update state when inputs change
   const handleExperienceChange = (e) => {
     const { name, value } = e.target;
     setExperienceData((prevExperienceData) => ({
@@ -72,28 +104,21 @@ function App() {
     }));
   };
 
-  //EXPERIENCE form submission
-  const handleExperienceSubmit = (e) => {
-    e.preventDefault();
-    console.log("Experience form submitted", experienceData);
-  };
-
   return (
     <>
       <PersonalForm
         personalData={personalData}
         handleChange={handlePersonalChange}
-        handleSubmit={handlePersonalSubmit}
       />
       <EducationForm
         educationData={educationData}
         handleChange={handleEducationChange}
-        handleSubmit={handleEducationSubmit}
+        handleAddEducation={handleAddEducation}
+        handleRemoveEducation={handleRemoveEducation}
       />
       <ExperienceForm
         experienceData={experienceData}
         handleChange={handleExperienceChange}
-        handleSubmit={handleExperienceSubmit}
       />
       <CVDisplay
         personalData={personalData}
