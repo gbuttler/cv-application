@@ -9,14 +9,6 @@ function EducationForm({
       {/* map through the education array */}
       {educationData.education.map((education) => (
         <div key={educationData.id}>
-          // Only show remove button if there's more than one entry
-          <div>
-            {educationData.education.length > 1 && (
-              <button onClick={() => handleRemoveEducation(education.id)}>
-                Remove Education
-              </button>
-            )}
-          </div>
           <form>
             <label for="institution">Institution: </label>
             <input
@@ -49,8 +41,15 @@ function EducationForm({
             ></input>
             <br />
           </form>
-          <button onClick={handleAddEducation()}>New Education</button>
-          <button onClick={handleRemoveEducation()}></button>
+          <button onClick={() => handleAddEducation()}>New Education</button>
+          {/* Only show remove button if there's more than one entry */}
+          <div>
+            {educationData.education.length > 1 && (
+              <button onClick={() => handleRemoveEducation(education.id)}>
+                Remove Education
+              </button>
+            )}
+          </div>
           <br />
         </div>
       ))}

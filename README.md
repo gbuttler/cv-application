@@ -5,8 +5,10 @@
 - Use React and Vite to create an app that will generate a CV based on user input
 - Mobile First in terms of design
 
-## Steps
+## To Do
 
-- without CSS get the forms (personal, education, experience) to appear in the display section.
-- make the 'new education button' add the three education fields again (and the delete education button?). Also a delete education button in case you add too many.
-- designing mobile first, make the app responsive and look good.
+- Get the new education text to appear in the CV display (currently it only shows the placeholder text, even if no new education is added)
+- Make the remove education button get rid of the correct section of the form (at the moment it only removes the most recently added)
+- Allow the user to add more work experience (same way as education)
+- Check the render method of 'App' - I'm getting an error
+- style everything with mobile first
