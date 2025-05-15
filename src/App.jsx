@@ -43,6 +43,9 @@ function App() {
           : education
       );
 
+      // Using this statement to find out why education ID isn't being defined
+      console.log(educationId);
+
       return {
         ...prevEducationData,
         education: updatedEducation,
