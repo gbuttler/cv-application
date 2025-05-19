@@ -8,15 +8,15 @@ function EducationForm({
     <>
       {/* map through the education array */}
       {educationData.education.map((education) => (
-        <div key={educationData.id}>
+        <div key={education.id}>
           <form>
             <label for="institution">Institution: </label>
             <input
               type="text"
               id="institution"
               name="institution"
-              value={educationData.institution}
-              onChange={handleChange}
+              value={education.institution}
+              onChange={(event) => handleChange(event, education.id)}
               placeholder="Starfleet Academy"
             ></input>
             <br />
@@ -25,8 +25,8 @@ function EducationForm({
               type="text"
               id="datesOfStudy"
               name="datesOfStudy"
-              value={educationData.datesOfStudy}
-              onChange={handleChange}
+              value={education.datesOfStudy}
+              onChange={(event) => handleChange(event, education.id)}
               placeholder="2022-2025"
             ></input>
             <br />
@@ -35,8 +35,8 @@ function EducationForm({
               type="text"
               id="courseName"
               name="courseName"
-              value={educationData.courseName}
-              onChange={handleChange}
+              value={education.courseName}
+              onChange={(event) => handleChange(event, education.id)}
               placeholder="Espionage"
             ></input>
             <br />

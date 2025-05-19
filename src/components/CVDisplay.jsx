@@ -25,13 +25,13 @@ function CVDisplay({ personalData, educationData, experienceData }) {
         <div key={education.id}>
           <div className="education-info-div">
             <p className="education-info">
-              {educationData.institution || "Starfleet Academy"}
+              {education.institution || "Starfleet Academy"}
             </p>
             <p className="education-info">
-              {educationData.datesOfStudy || "2022-2025"}
+              {education.datesOfStudy || "2022-2025"}
             </p>
             <p className="education-info">
-              {educationData.courseName || "Espionage"}
+              {education.courseName || "Espionage"}
             </p>
           </div>
         </div>

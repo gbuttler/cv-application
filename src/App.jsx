@@ -36,15 +36,18 @@ function App() {
   const handleEducationChange = (e, educationId) => {
     const { name, value } = e.target;
 
+    console.log(e, educationId);
+
     setEducationData((prevEducationData) => {
       const updatedEducation = prevEducationData.education.map((education) =>
         education.id === educationId
           ? { ...education, [name]: value }
           : education
       );
+      console.log(prevEducationData);
 
       // Using this statement to find out why education ID isn't being defined
-      console.log(educationId);
+      console.log(`Current education id being changed is: ${educationId}`);
 
       return {
         ...prevEducationData,
@@ -72,6 +75,8 @@ function App() {
         courseName: "",
       };
 
+      console.log(`New education id is: ${newEducation.id}`);
+
       //add to the education array
       return {
         ...prevEducationData,
@@ -92,18 +97,79 @@ function App() {
 
   //store EXPERIENCE data
   const [experienceData, setExperienceData] = useState({
-    jobTitle: "",
-    placeOfWork: "",
-    datesOfWork: "",
-    responsibilities: "",
+    experience: [
+      {
+        id: 1,
+        jobTitle: "",
+        placeOfWork: "",
+        datesOfWork: "",
+        resonsibilities: "",
+      },
+    ],
   });
 
   //EXPERIENCE - update state when inputs change
-  const handleExperienceChange = (e) => {
+  const handleExperienceChange = (e, experienceId) => {
     const { name, value } = e.target;
+
+    setExperienceData((prevExperienceData) => {
+      const updatedExperience = prevExperienceData.experience.map(
+        (experience) =>
+          experience.id === experienceId
+            ? { ...experience, [name]: value }
+            : experience
+      );
+      console.log(prevExperienceData);
+
+      // Using this statement to find out why education ID isn't being defined
+      console.log(`Current experience id being changed is: ${experienceId}`);
+
+      return {
+        ...prevExperienceData,
+        experience: updatedExperience,
+      };
+    });
+  };
+
+  //EXPERIENCE - add a new experience entry
+  const handleAddExperience = () => {
+    setExperienceData((prevExperienceData) => {
+      //get a new id
+      const newId =
+        prevExperienceData.experience.length > 0
+          ? Math.max(
+              ...prevExperienceData.experience.map(
+                (experience) => experience.id
+              )
+            ) + 1
+          : 1;
+
+      //create new experience
+      const newExperience = {
+        id: newId,
+        jobTitle: "",
+        placeOfWork: "",
+        datesOfWork: "",
+        resonsibilities: "",
+      };
+
+      console.log(`New experience id is: ${newExperience.id}`);
+
+      //add to the education array
+      return {
+        ...prevExperienceData,
+        experience: [...prevExperienceData.experience, newExperience],
+      };
+    });
+  };
+
+  //EDUCATION - remove extra education
+  const handleRemoveExperience = (experienceId) => {
     setExperienceData((prevExperienceData) => ({
       ...prevExperienceData,
-      [name]: value,
+      experience: prevExperienceData.experience.filter(
+        (experience) => experience.id !== experienceId
+      ),
     }));
   };
 
@@ -122,6 +188,8 @@ function App() {
       <ExperienceForm
         experienceData={experienceData}
         handleChange={handleExperienceChange}
+        handleAddExperience={handleAddExperience}
+        handleRemoveExperience={handleRemoveExperience}
       />
       <CVDisplay
         personalData={personalData}
