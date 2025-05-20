@@ -119,7 +119,6 @@ function App() {
             ? { ...experience, [name]: value }
             : experience
       );
-      console.log(prevExperienceData);
 
       // Using this statement to find out why education ID isn't being defined
       console.log(`Current experience id being changed is: ${experienceId}`);
@@ -163,7 +162,7 @@ function App() {
     });
   };
 
-  //EDUCATION - remove extra education
+  //EXPERIENCE - remove extra experience
   const handleRemoveExperience = (experienceId) => {
     setExperienceData((prevExperienceData) => ({
       ...prevExperienceData,

@@ -36,22 +36,25 @@ function CVDisplay({ personalData, educationData, experienceData }) {
           </div>
         </div>
       ))}
-
-      <div className="experience-info-div">
-        <p className="experience-info">
-          {experienceData.jobTitle || "Rider of Rohan"}
-        </p>
-        <p className="experience-info">
-          {experienceData.placeOfWork || "Rohan"}
-        </p>
-        <p className="experience-info">
-          {experienceData.datesOfWork || "The Third Age (current position)"}
-        </p>
-        <p className="experience-info">
-          {experienceData.responsibilities ||
-            "Protect Rohan from the forces of darkness (or Gondor)."}
-        </p>
-      </div>
+      {experienceData.experience.map((experience) => (
+        <div key={experience.id}>
+          <div className="experience-info-div">
+            <p className="experience-info">
+              {experience.jobTitle || "Rider of Rohan"}
+            </p>
+            <p className="experience-info">
+              {experience.placeOfWork || "Rohan"}
+            </p>
+            <p className="experience-info">
+              {experience.datesOfWork || "The Third Age (current position)"}
+            </p>
+            <p className="experience-info">
+              {experience.responsibilities ||
+                "Protect Rohan from the forces of darkness (or Gondor)."}
+            </p>
+          </div>
+        </div>
+      ))}
     </>
   );
 }
