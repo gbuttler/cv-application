@@ -6,6 +6,7 @@ import PersonalForm from "./components/PersonalForm";
 import EducationForm from "./components/EducationForm";
 import ExperienceForm from "./components/ExperienceForm";
 import CVDisplay from "./components/CVDisplay";
+import Header from "./components/Header";
 
 function App() {
   //store PERSONAL data
@@ -174,6 +175,7 @@ function App() {
 
   return (
     <>
+      <Header />
       <PersonalForm
         personalData={personalData}
         handleChange={handlePersonalChange}

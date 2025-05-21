@@ -1,8 +1,8 @@
 function PersonalForm({ personalData, handleChange }) {
   return (
     <>
-      <div className="flex flex-col items-center p-3">
-        <h1>Personal Details</h1>
+      <div className="flex flex-col items-center p-3 max-w-sm">
+        <h2>Personal Details</h2>
         <form>
           <div className="flex justify-between m-1">
             <label for="fullName">Full name: </label>
@@ -13,7 +13,6 @@ function PersonalForm({ personalData, handleChange }) {
               value={personalData.fullName}
               onChange={handleChange}
               placeholder="Katniss Everdeen"
-              className="flex grow"
             ></input>
           </div>
 
