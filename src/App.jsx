@@ -176,27 +176,35 @@ function App() {
   return (
     <>
       <Header />
-      <PersonalForm
-        personalData={personalData}
-        handleChange={handlePersonalChange}
-      />
-      <EducationForm
-        educationData={educationData}
-        handleChange={handleEducationChange}
-        handleAddEducation={handleAddEducation}
-        handleRemoveEducation={handleRemoveEducation}
-      />
-      <ExperienceForm
-        experienceData={experienceData}
-        handleChange={handleExperienceChange}
-        handleAddExperience={handleAddExperience}
-        handleRemoveExperience={handleRemoveExperience}
-      />
-      <CVDisplay
-        personalData={personalData}
-        educationData={educationData}
-        experienceData={experienceData}
-      />
+      <div className="lg:flex lg:flex-row lg:w-full lg:justify-around">
+        <div className="lg:border-r-1 lg:border-l-1 lg:border-gray-300">
+          <div className=" sm:flex sm:flex-row lg:flex-col sm:w-full sm:justify-around sm:border-b-1 sm:border-gray-300">
+            <PersonalForm
+              personalData={personalData}
+              handleChange={handlePersonalChange}
+            />
+            <EducationForm
+              educationData={educationData}
+              handleChange={handleEducationChange}
+              handleAddEducation={handleAddEducation}
+              handleRemoveEducation={handleRemoveEducation}
+            />
+          </div>
+          <ExperienceForm
+            experienceData={experienceData}
+            handleChange={handleExperienceChange}
+            handleAddExperience={handleAddExperience}
+            handleRemoveExperience={handleRemoveExperience}
+          />
+        </div>
+        <div>
+          <CVDisplay
+            personalData={personalData}
+            educationData={educationData}
+            experienceData={experienceData}
+          />
+        </div>
+      </div>
     </>
   );
 }

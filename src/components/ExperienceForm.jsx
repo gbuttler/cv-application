@@ -6,7 +6,7 @@ function ExperienceForm({
 }) {
   return (
     <>
-      <div className="flex flex-col items-center p-3 max-w-sm">
+      <div className="flex flex-col items-center p-3 w-full border-b-1 border-gray-300">
         <h2>Previous Experience Details</h2>
         {experienceData.experience.map((experience) => (
           <div key={experience.id}>

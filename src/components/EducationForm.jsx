@@ -6,7 +6,7 @@ function EducationForm({
 }) {
   return (
     <>
-      <div className="flex flex-col items-center p-3 max-w-sm">
+      <div className="flex flex-col items-center p-3 w-full sm:w-auto border-b-1 border-gray-300 sm:border-0">
         <h2>Education</h2>
         {/* map through the education array */}
         {educationData.education.map((education) => (
